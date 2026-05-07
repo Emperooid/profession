@@ -10,7 +10,7 @@ const Photo = () => {
         animate={{
           opacity: 1,
           scale: 1,
-          transition: { delay: 2, duration: 0.4, ease: 'easeIn' }
+          transition: { delay: 1.5, duration: 0.4, ease: 'easeIn' }
         }}
         className='relative'
       >
@@ -20,26 +20,26 @@ const Photo = () => {
           animate={{
             opacity: 1,
             scale: 1,
-            transition: { delay: 2.4, duration: 0.4, ease: 'easeInOut' }
+            transition: { delay: 1.8, duration: 0.4, ease: 'easeInOut' }
           }}
-          className='w-[250px] h-[250px] sm:w-[280px] sm:h-[280px] md:w-[320px] md:h-[320px] lg:w-[380px] lg:h-[380px] xl:w-[420px] xl:h-[420px] 2xl:w-[460px] 2xl:h-[460px] relative mix-blend-lighten sm:mb-5'
+          className='w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] xl:w-[380px] xl:h-[380px] 2xl:w-[420px] 2xl:h-[420px] relative mix-blend-lighten'
         >
           <Image
             src='/profilePik.png'
             priority={true}
-            quality={25, 50, 75}
+            quality={90}
             fill
             alt='profile picture'
             className='object-contain rounded-full'
             placeholder='blur'
             blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+Rj5m8hBjOhU6+KKIQ='
-            sizes='(max-width: 640px) 250px, (max-width: 768px) 280px, (max-width: 1024px) 320px, (max-width: 1280px) 380px, (max-width: 1536px) 420px, 460px'
+            sizes='(max-width: 640px) 200px, (max-width: 768px) 250px, (max-width: 1024px) 300px, (max-width: 1280px) 350px, (max-width: 1536px) 380px, 420px'
           />
         </motion.div>
 
         {/* SVG Circle Border */}
         <motion.svg 
-          className='absolute top-0 left-0 w-[250px] h-[250px] sm:w-[280px] sm:h-[280px] md:w-[320px] md:h-[320px] lg:w-[380px] lg:h-[380px] xl:w-[420px] xl:h-[420px] 2xl:w-[460px] 2xl:h-[460px]'
+          className='absolute top-0 left-0 w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] xl:w-[380px] xl:h-[380px] 2xl:w-[420px] 2xl:h-[420px]'
           fill="transparent" 
           viewBox="0 0 506 506"
           xmlns="http://www.w3.org/2000/svg"

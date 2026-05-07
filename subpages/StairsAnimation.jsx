@@ -1,30 +1,20 @@
 "use client";
-import { AnimatePresence, motion } from "framer-motion";
-import {usePathname} from "next/navigation"
+import { AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import Stairs from "@/subpages/Stairs";
 
-
 const StairsAnimation = () => {
-    const pathname = usePathname();
+  const pathname = usePathname();
   return (
-    <>
-      <AnimatePresence mode="wait">
-        <div key={pathname}>
-            <div className="h-screen w-screen fixed top-0 left-0 right-0 pointer-events-none z-40 flex">
-                <Stairs />
-            </div>
-            <motion.div
-              className="h-screen w-screen fixed bg-primary top-0 left-0  pointer-events-none "
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 0, transition: { delay: 1, duration: 0.4, ease: "easeInOut" } }}
-              // exit={{ opacity: 0 }}
-            />
+    <AnimatePresence mode="wait">
+      <div key={pathname}>
+        {/* The 6 bars sit inside a fixed full-screen flex row */}
+        <div className="h-screen w-screen fixed top-0 left-0 pointer-events-none z-50 flex">
+          <Stairs />
         </div>
-      </AnimatePresence>
-    </>
-  )
-}
+      </div>
+    </AnimatePresence>
+  );
+};
 
 export default StairsAnimation;
-
-

@@ -23,11 +23,16 @@ const geistMono = Geist_Mono({
 
 
 export const metadata = {
-   title: "Emmanuel Awosika - software Engineer Portfolio",
-  description: "software Engineer & Creative Problem Solver. I craft digital experiences that combine beautiful design with robust functionality.",
+  title: "Emmanuel Awosika - Software Engineer Portfolio",
+  description: "Software Engineer & Creative Problem Solver. I craft digital experiences that combine beautiful design with robust functionality.",
   keywords: ["Emmanuel Awosika", "software Engineer", "React", "Next.js", "Javascript", "Portfolio"],
   authors: [{ name: "Emmanuel Awosika" }],
   creator: "Emmanuel Awosika",
+  icons: {
+    icon: "/me.png",
+    shortcut: "/me.png",
+    apple: "/me.png",
+  },
   openGraph: {
     title: "Emmanuel Awosika - software Engineer Portfolio",
     description: "software Engineer & Creative Problem Solver. I craft digital experiences that combine beautiful design with robust functionality.",
