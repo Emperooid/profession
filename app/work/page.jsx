@@ -1,297 +1,304 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
-import { FiArrowUpRight, FiGithub, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Link from "next/link";
-import Image from "next/image";
+import { useState } from "react";
+import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import { HiPlus, HiMinus } from "react-icons/hi2";
 
-/* ─── DATA ──────────────────────────────────────────────────────── */
-// Replace `image: null` with the real path (e.g. "/projects/biasless.png") once you have screenshots.
+/* ─── DATA ───────────────────────────────────────────────────────── */
 
 const projects = [
   {
     num: "01",
-    category: "AI · Full-Stack",
-    title: "Biasless",
+    category: "Mobile · FinTech",
+    title: "EasePay Mobile App",
+    year: "2026",
     description:
-      "AI journalism bias detector built at the CJID Hackathon. Detects biased language with ~75% accuracy using ML sentiment pipelines, helping media outlets cut misinformation and boost reporting credibility by 20–30%.",
-    stack: ["React", "Python", "NLP/ML", "Node.js"],
-    image: null,
-    github: "https://github.com/Emperooid",
-    live: "#",
-    from: "#4c1d95",
-    to: "#1e1b4b",
-    accent: "#8b5cf6",
+      "A cross-platform mobile payments app built for Easetack — handling transactions, wallet management, and financial flows with a clean, fast UI. Shipped to both iOS and Android from a single React Native codebase.",
+    stack: ["React Native", "Expo", "TypeScript", "Node.js"],
+    github: "https://github.com/Emperooid/easepayfrontend",
+    live: "https://play.google.com/store/apps/details?id=com.easetack.easepay",
+    liveLabel: "Play Store",
+    accent: "#22c55e",
+    from: "#14532d",
+    to: "#0a0a0a",
   },
   {
     num: "02",
-    category: "AI · EdTech",
-    title: "Gradlink AI",
+    category: "Frontend · FinTech",
+    title: "EasePay Website",
+    year: "2026",
     description:
-      "Graduate job-placement system with AI recommendation algorithms. Boosted match rates ~40%, placed 2nd at the EdTech Hackathon. Tested by 80+ students with an average 45% improvement in placement outcomes.",
-    stack: ["Next.js", "Node.js", "PostgreSQL", "ML"],
-    image: null,
-    github: "https://github.com/Emperooid",
-    live: "#",
-    from: "#0c4a6e",
-    to: "#0a0a1a",
-    accent: "#0ea5e9",
+      "The public-facing web platform for EasePay — a responsive, performant marketing and product site built with Next.js. Covers landing pages, feature breakdowns, and onboarding flows.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    github: "https://github.com/Emperooid/easepay-website",
+    live: "https://easepay-website.vercel.app",
+    liveLabel: "Live site",
+    accent: "#34d399",
+    from: "#064e3b",
+    to: "#0a0a12",
   },
   {
     num: "03",
-    category: "HealthTech · Full-Stack",
-    title: "NitHub Health Platform",
+    category: "AI · Productivity",
+    title: "Olive AI",
+    year: "2025",
     description:
-      "Virtual health scheduling platform bridging patients and doctors in underserved communities. Role-based dashboards for Admins, Doctors, and Patients with real-time appointment management.",
-    stack: ["React", "Vite", "TypeScript", "Axios"],
-    image: null,
-    github: "#",
-    live: "#",
-    from: "#064e3b",
-    to: "#0a0a14",
-    accent: "#10b981",
+      "An AI-powered assistant designed to simplify workflows and surface smart insights. Built with a focus on fast responses, clean UX, and practical utility — not just a demo.",
+    stack: ["React", "Node.js", "OpenAI API", "TypeScript"],
+    github: "https://github.com/Emperooid/olive-ai",
+    live: null,
+    liveLabel: null,
+    accent: "#a3e635",
+    from: "#365314",
+    to: "#0a0a0a",
   },
   {
     num: "04",
-    category: "Frontend · Non-Profit",
-    title: "Bunmi Adedayo Foundation",
+    category: "AI · EdTech",
+    title: "Gradlink AI",
+    year: "2024",
     description:
-      "Modern redesign of the Foundation's website. Achieved a 60% increase in web traffic and 35% rise in online engagement within six months. Introduced TDD, cutting downtime by 40%.",
-    stack: ["HTML5", "CSS3", "JavaScript", "Tailwind"],
-    image: null,
-    github: "#",
-    live: "#",
-    from: "#78350f",
-    to: "#0a0a0a",
-    accent: "#f59e0b",
+      "Graduate job-placement system with AI recommendation algorithms. Boosted match rates ~40%, placed 2nd at the EdTech Hackathon. Tested by 80+ students with an average 45% improvement in placement outcomes.",
+    stack: ["Next.js", "Node.js", "PostgreSQL", "ML"],
+    github: "https://github.com/Emperooid/gradlink--ai",
+    live: "https://gradlink-ai.vercel.app",
+    liveLabel: "Live site",
+    accent: "#0ea5e9",
+    from: "#0c4a6e",
+    to: "#0a0a1a",
   },
   {
     num: "05",
-    category: "Logistics · Full-Stack",
-    title: "Rottank Logistics Dashboard",
+    category: "AI · Full-Stack",
+    title: "Biasless",
+    year: "2024",
     description:
-      "Inventory management and real-time shipment tracking for Rottank Storage & Logistics (Amsterdam). Integrated live dashboards and data-viz tools — improved logistics visibility and decision speed by ~35%.",
-    stack: ["React", "Node.js", "REST APIs", "Charts"],
-    image: null,
-    github: "#",
-    live: "#",
-    from: "#1e293b",
-    to: "#0a0a0a",
-    accent: "#94a3b8",
+      "AI journalism bias detector built at the CJID Hackathon. Detects biased language with ~75% accuracy using ML sentiment pipelines, helping media outlets cut misinformation and boost reporting credibility by 20–30%.",
+    stack: ["React", "Python", "NLP/ML", "Node.js"],
+    github: "https://github.com/Emperooid",
+    live: null,
+    liveLabel: null,
+    accent: "#8b5cf6",
+    from: "#4c1d95",
+    to: "#1e1b4b",
   },
 ];
 
-/* ─── COMPONENT ─────────────────────────────────────────────────── */
+/* ─── PAGE ───────────────────────────────────────────────────────── */
 
 const Work = () => {
-  const [active, setActive] = useState(0);
-  const p = projects[active];
-
-  const prev = () => setActive(i => (i - 1 + projects.length) % projects.length);
-  const next = () => setActive(i => (i + 1) % projects.length);
+  const [open, setOpen] = useState(null);
+  const toggle = (i) => setOpen(open === i ? null : i);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}
-      className="min-h-[80vh] flex flex-col justify-center py-16 xl:py-24"
-    >
+    <section className="min-h-[80vh] py-16 xl:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Page heading */}
-        <div className="mb-10 xl:mb-14">
-          <span className="text-accent text-xs uppercase tracking-[0.25em] font-medium">Portfolio</span>
-          <h1
-            className="font-black leading-[0.9] tracking-tight mt-2 text-white"
-            style={{ fontSize: 'clamp(38px, 5vw, 68px)' }}
-          >
-            My Work
-          </h1>
-        </div>
-
-        <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 items-start">
-
-          {/* ── LEFT: project info ── */}
-          <div className="w-full xl:w-[45%] flex flex-col gap-6 xl:sticky xl:top-32">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col gap-5"
-              >
-                {/* Number */}
-                <span
-                  className="font-black leading-none tracking-tighter select-none"
-                  style={{ fontSize: 'clamp(60px, 8vw, 100px)', color: `${p.accent}18` }}
-                >
-                  {p.num}
-                </span>
-
-                {/* Category + title */}
-                <div className="flex flex-col gap-1 -mt-4">
-                  <span className="text-xs uppercase tracking-widest font-medium" style={{ color: p.accent }}>
-                    {p.category}
-                  </span>
-                  <h2
-                    className="font-bold text-white leading-tight"
-                    style={{ fontSize: 'clamp(26px, 3vw, 40px)' }}
-                  >
-                    {p.title}
-                  </h2>
-                </div>
-
-                {/* Description */}
-                <p className="text-white/55 text-sm leading-relaxed max-w-lg">{p.description}</p>
-
-                {/* Stack */}
-                <div className="flex flex-wrap gap-2">
-                  {p.stack.map((t, ti) => (
-                    <span
-                      key={ti}
-                      className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full border"
-                      style={{ color: p.accent, borderColor: `${p.accent}25` }}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex items-center gap-3 pt-1">
-                  {p.live !== "#" ? (
-                    <Link
-                      href={p.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-white/70 border border-white/10 hover:border-white/25 hover:text-white transition-all duration-300"
-                    >
-                      Live site <FiArrowUpRight />
-                    </Link>
-                  ) : (
-                    <span className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-white/20 border border-white/5 cursor-not-allowed">
-                      Coming soon <FiArrowUpRight />
-                    </span>
-                  )}
-
-                  {p.github !== "#" ? (
-                    <Link
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-white/70 border border-white/10 hover:border-white/25 hover:text-white transition-all duration-300"
-                    >
-                      GitHub <FiGithub />
-                    </Link>
-                  ) : (
-                    <span className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-white/20 border border-white/5 cursor-not-allowed">
-                      Private <FiGithub />
-                    </span>
-                  )}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Navigation */}
-            <div className="flex items-center gap-3 pt-2">
-              <button
-                onClick={prev}
-                aria-label="Previous project"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-accent hover:text-accent transition-all duration-300"
-              >
-                <FiChevronLeft />
-              </button>
-              <span className="text-white/30 text-xs font-medium tabular-nums">
-                {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-              </span>
-              <button
-                onClick={next}
-                aria-label="Next project"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-accent hover:text-accent transition-all duration-300"
-              >
-                <FiChevronRight />
-              </button>
-            </div>
+        {/* Header */}
+        <motion.div
+          className="flex items-end justify-between mb-16 xl:mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div>
+            <span className="text-accent text-xs uppercase tracking-[0.25em] font-medium">
+              Selected Works
+            </span>
+            <h1
+              className="font-black leading-[0.9] tracking-tight mt-2 text-white"
+              style={{ fontSize: "clamp(38px, 5vw, 68px)" }}
+            >
+              My Work
+            </h1>
           </div>
+          <div className="flex flex-col items-end gap-2">
+            <span className="text-white/18 text-xs tabular-nums">
+              {String(projects.length).padStart(2, "0")} projects
+            </span>
+            <Link
+              href="/contact"
+              className="hidden sm:flex items-center gap-2 text-white/35 text-xs uppercase tracking-widest hover:text-accent transition-colors duration-300"
+            >
+              Hire me <FiArrowUpRight />
+            </Link>
+          </div>
+        </motion.div>
 
-          {/* ── RIGHT: project cards list ── */}
-          <div className="w-full xl:w-[55%] flex flex-col gap-3">
-            {projects.map((proj, i) => (
-              <motion.button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`group w-full text-left rounded-2xl p-5 transition-all duration-400 border ${
-                  active === i
-                    ? "border-white/10 bg-white/4 scale-[1.01]"
-                    : "border-white/4 hover:border-white/8 hover:bg-white/2"
-                }`}
-                whileTap={{ scale: 0.99 }}
+        {/* List */}
+        <div>
+          <div className="w-full h-px bg-white/8" />
+
+          {projects.map((p, i) => {
+            const isOpen = open === i;
+
+            return (
+              <motion.div
+                key={p.num}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="relative border-b border-white/8 overflow-hidden"
               >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-4 min-w-0">
-                    {/* Color swatch */}
-                    <div
-                      className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center text-xs font-black opacity-80"
-                      style={{
-                        background: `linear-gradient(135deg, ${proj.from}, ${proj.to})`,
-                        color: proj.accent,
-                      }}
-                    >
-                      {proj.num}
+                {/* Accent left bar */}
+                <div
+                  className="absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-500"
+                  style={{ background: isOpen ? p.accent : "transparent" }}
+                />
+
+                {/* Background tint */}
+                <div
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(to right, ${p.accent}07, transparent 60%)`,
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                />
+
+                {/* Row trigger */}
+                <button
+                  onClick={() => toggle(i)}
+                  className="relative w-full text-left pl-6 pr-2 sm:pr-0 py-8 xl:py-11 focus:outline-none"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-baseline gap-4 xl:gap-7 min-w-0">
+                      <span
+                        className="font-mono text-xs shrink-0 tabular-nums transition-colors duration-300"
+                        style={{ color: isOpen ? p.accent : "rgba(255,255,255,0.2)" }}
+                      >
+                        {p.num}
+                      </span>
+                      <h2
+                        className="font-black leading-none truncate transition-colors duration-400"
+                        style={{
+                          fontSize: "clamp(24px, 4vw, 60px)",
+                          color: isOpen ? "white" : "rgba(255,255,255,0.75)",
+                          letterSpacing: "-0.02em",
+                        }}
+                      >
+                        {p.title}
+                      </h2>
                     </div>
-                    <div className="min-w-0">
-                      <p className="text-xs uppercase tracking-widest mb-0.5" style={{ color: proj.accent + "99" }}>
-                        {proj.category}
-                      </p>
-                      <h3 className="text-sm font-semibold text-white truncate">{proj.title}</h3>
+
+                    <div className="flex items-center gap-4 xl:gap-8 shrink-0">
+                      <span className="hidden md:block text-white/30 text-sm">{p.category}</span>
+                      <span className="hidden lg:block text-white/20 text-xs tabular-nums">{p.year}</span>
+                      <div
+                        className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-400 shrink-0"
+                        style={{
+                          borderColor: isOpen ? `${p.accent}55` : "rgba(255,255,255,0.1)",
+                          color: isOpen ? p.accent : "rgba(255,255,255,0.3)",
+                          background: isOpen ? `${p.accent}10` : "transparent",
+                        }}
+                      >
+                        {isOpen ? <HiMinus className="text-sm" /> : <HiPlus className="text-sm" />}
+                      </div>
                     </div>
                   </div>
-                  <FiArrowUpRight
-                    className={`shrink-0 transition-all duration-300 ${
-                      active === i ? "text-accent rotate-0" : "text-white/20 -rotate-45"
-                    }`}
-                  />
-                </div>
 
-                {/* Expanded preview */}
-                <AnimatePresence>
-                  {active === i && (
+                  {/* Category on mobile */}
+                  <p
+                    className="md:hidden text-[10px] uppercase tracking-widest mt-2 pl-9 transition-colors duration-300"
+                    style={{ color: isOpen ? p.accent : "rgba(255,255,255,0.25)" }}
+                  >
+                    {p.category}
+                  </p>
+                </button>
+
+                {/* Expanded panel */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
                     <motion.div
+                      key="panel"
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
-                      {/* Project image / gradient placeholder */}
-                      <div
-                        className="mt-4 rounded-xl overflow-hidden relative h-44"
-                        style={{
-                          background: `linear-gradient(135deg, ${proj.from} 0%, ${proj.to} 100%)`,
-                        }}
-                      >
-                        {proj.image ? (
-                          <Image src={proj.image} fill className="object-cover" alt={proj.title} />
-                        ) : (
-                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                            <span className="text-5xl font-black opacity-8 leading-none">{proj.num}</span>
-                            <span className="text-xs uppercase tracking-widest opacity-25">
-                              Add screenshot → public/projects/{proj.title.toLowerCase().replace(/\s+/g, "-")}.png
-                            </span>
+                      <div className="pl-6 sm:pl-14 pr-4 pb-10 xl:pb-14">
+                        <div className="flex flex-col gap-6 max-w-2xl">
+
+                          {/* Description */}
+                          <p className="text-white/55 text-sm leading-relaxed">{p.description}</p>
+
+                          {/* Metadata row */}
+                          <div
+                            className="grid grid-cols-2 sm:grid-cols-3 gap-6 py-5"
+                            style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                          >
+                            <div>
+                              <span className="text-[10px] uppercase tracking-widest text-white/25 block mb-2">
+                                Category
+                              </span>
+                              <span className="text-xs text-white/65">{p.category}</span>
+                            </div>
+                            <div>
+                              <span className="text-[10px] uppercase tracking-widest text-white/25 block mb-2">
+                                Year
+                              </span>
+                              <span className="text-xs text-white/65">{p.year}</span>
+                            </div>
+                            <div className="col-span-2 sm:col-span-1">
+                              <span className="text-[10px] uppercase tracking-widest text-white/25 block mb-2">
+                                Stack
+                              </span>
+                              <div className="flex flex-wrap gap-1.5">
+                                {p.stack.map((t, ti) => (
+                                  <span
+                                    key={ti}
+                                    className="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full border"
+                                    style={{ color: `${p.accent}cc`, borderColor: `${p.accent}28` }}
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
                           </div>
-                        )}
+
+                          {/* Links */}
+                          <div className="flex items-center gap-3">
+                            {p.live ? (
+                              <Link
+                                href={p.live}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-black hover:opacity-85 transition-opacity"
+                                style={{ background: p.accent }}
+                              >
+                                {p.liveLabel} <FiArrowUpRight />
+                              </Link>
+                            ) : (
+                              <span className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold text-white/22 border border-white/8 cursor-not-allowed">
+                                Coming soon
+                              </span>
+                            )}
+                            {p.github && (
+                              <Link
+                                href={p.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-semibold text-white/55 border border-white/12 hover:border-white/28 hover:text-white transition-all duration-300"
+                              >
+                                GitHub <FiGithub />
+                              </Link>
+                            )}
+                          </div>
+
+                        </div>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.button>
-            ))}
-          </div>
+              </motion.div>
+            );
+          })}
         </div>
+
       </div>
-    </motion.div>
+    </section>
   );
 };
 

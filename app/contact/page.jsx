@@ -27,7 +27,7 @@ const info = [
   {
     Icon: <FaEnvelope className="text-xl text-accent transition-colors duration-300" />,
     title: "Email",
-    description: "awosikaemmanuel@gmail.com",
+    description: "awosikaemmanueldefirst@gmail.com",
     link: "mailto:awosikaemmanueldefirst@gmail.com"
   },
   {
@@ -98,23 +98,24 @@ const Contact = () => {
     setStatus("sending")
 
     try {
-      // Simulate API call - replace with actual implementation
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      
-      setStatus("success")
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "general",
-        message: ""
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       })
-      
-      setTimeout(() => setStatus("idle"), 3000)
+
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || "Failed to send message.")
+      }
+
+      setStatus("success")
+      setFormData({ name: "", email: "", phone: "", subject: "general", message: "" })
+      setTimeout(() => setStatus("idle"), 4000)
     } catch (err) {
       setStatus("error")
-      setError("Failed to send message. Please try again later.")
-      setTimeout(() => setStatus("idle"), 3000)
+      setError(err.message || "Failed to send message. Please try again later.")
+      setTimeout(() => setStatus("idle"), 4000)
     }
   }
 

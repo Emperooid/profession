@@ -6,34 +6,34 @@ import { FiArrowUpRight } from "react-icons/fi";
 const services = [
   {
     num: "01",
-    title: "Full-Stack\nWeb Development",
+    title: "Frontend\nEngineering",
     description:
-      "End-to-end web applications built with React, Next.js, Node.js, and TypeScript — from API design and database architecture to responsive, performant UIs that users actually enjoy.",
-    tags: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL"],
+      "Pixel-perfect, performant interfaces built with React and Next.js — responsive layouts, smooth animations, accessible components, and UIs that feel fast on every device.",
+    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Vitest"],
     href: "/work",
   },
   {
     num: "02",
-    title: "Mobile App\nDevelopment",
+    title: "Backend\nEngineering",
     description:
-      "Cross-platform mobile applications with React Native — role-based dashboards, real-time data, secure auth, and seamless iOS/Android experiences built from the same codebase.",
-    tags: ["React Native", "Expo", "TypeScript", "Zod"],
-    href: "/work",
-  },
-  {
-    num: "03",
-    title: "UI/UX Design\n& Prototyping",
-    description:
-      "Interfaces that feel intentional — wireframes in Figma, component libraries, design systems, and responsive layouts that balance aesthetics with accessibility and speed.",
-    tags: ["Figma", "Design Systems", "Tailwind CSS", "Framer"],
+      "Scalable server-side systems with Node.js and NestJS — RESTful and GraphQL APIs, JWT-secured auth, PostgreSQL or MongoDB databases, and Docker-containerised deployments.",
+    tags: ["Node.js", "NestJS", "GraphQL", "PostgreSQL", "MongoDB", "Docker", "Redis"],
     href: "/contact",
   },
   {
-    num: "04",
-    title: "API & Backend\nEngineering",
+    num: "03",
+    title: "Mobile\nEngineering",
     description:
-      "RESTful and GraphQL APIs with Express.js or NestJS, secured with JWT, backed by MongoDB or PostgreSQL, and containerised with Docker for predictable deployments.",
-    tags: ["Node.js", "NestJS", "GraphQL", "Docker", "AWS"],
+      "Cross-platform mobile apps with React Native and Expo — real-time data, role-based dashboards, secure authentication, and polished iOS/Android experiences from one codebase.",
+    tags: ["React Native", "Expo", "TypeScript", "Zod", "iOS / Android"],
+    href: "/work",
+  },
+  {
+    num: "04",
+    title: "Full-Stack\nDevelopment",
+    description:
+      "End-to-end product delivery — from database schema and API contracts to the final UI. I own the full stack, write tests, set up CI/CD, and ship to production with confidence.",
+    tags: ["Git", "GitHub Actions", "Vercel", "AWS", "Jest", "Cypress", "Prisma"],
     href: "/contact",
   },
 ];
